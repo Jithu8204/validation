@@ -1,0 +1,68 @@
+                                        
+<html>
+<head>
+<title>validation</title>
+</head>
+<body>
+<center>
+<form action="webnew.html"method="post"enctype="multipart/form_data">
+Name<input type="text" id="name" placeholder="Enter name">
+<br>
+<br>
+Email<input type="email" id="email"placeholder="Enter email">
+<br>
+<br>
+<input type="file" id="fileUpload" accept="image/*">
+<br>
+<br>
+Female<input type="radio" id="female" name="male-female">
+Male<input type="radio" id="male" name="male-female">
+<br>
+<br>
+Password<input type="password" id="password" placeholder="Enter password">
+<br>
+<br>
+<input type="submit" onclick="return f()">
+</center>
+</form>
+</body>
+<script>
+function f()
+{
+var name=document.getElementById("name").value;
+var email=document.getElementById("email").value;
+var filePath=document.getElementById("fileUpload").value;
+var allowedExtensions= /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+var female=document.getElementById("female");
+var male=document.getElementById("male");
+var pattern=document.getElementById("password").value;
+if (name=="")
+{
+alert("please enter your name");
+return false;
+}
+else if(email=="")
+{
+alert("please enter the email");
+return false;
+}
+else if(!allowedExtensions.exec(filePath))
+{
+alert("Please choose image file");
+return false;
+}
+else if(!male.checked && !female.checked){
+alert("Please select gender");
+return false;
+}
+else if(pattern.search(/[A-Z!@#$%^&*_=+-]/)<0)
+{
+alert("Password should contain special character");
+return false;
+}
+else{
+return true;
+}
+}
+</script>
+</html>
